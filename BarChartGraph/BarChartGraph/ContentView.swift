@@ -8,7 +8,6 @@
 import Charts
 import SwiftUI
 
-// 1
 struct Video: Identifiable, Equatable {
     let id = UUID()
     let source: String
@@ -17,7 +16,6 @@ struct Video: Identifiable, Equatable {
 
 struct ContentView: View {
     
-    // 2
     @State var videos: [Video] = [
         .init(source: "SEO", viewCount: 122),
         .init(source: "Social", viewCount: 58),
@@ -30,7 +28,7 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 50) {
-                generateChart()
+                generateChart
                 
                 Button() {
                     randomizeData()
@@ -44,16 +42,11 @@ struct ContentView: View {
                 }
             }
             .padding()
-//            .padding()
-//            .navigationTitle("Animated Bar Graph")
-//            .frame(maxWidth: .infinity, maxHeight: .infinity)
-//            .background(.gray.opacity(0.1))
+            .navigationTitle("Animated Bar Graph")
         }
     }
     
-    //3
-    @ViewBuilder
-    func generateChart() -> some View {
+    var generateChart: some View {
         Chart {
             RuleMark(y: .value("Goal", goalLine))
                 .foregroundStyle(.mint)
